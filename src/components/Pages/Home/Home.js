@@ -6,7 +6,7 @@ const Home = () => {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Hello Code Hungrier</h1>
+          <h1 className="text-5xl font-bold">Hello Tech Learner</h1>
           <p className="py-6">
             This platform is for you to harvest your knowledge . Here you can
             find programming languaged tutorial.Explore the courses and be an
