@@ -1,21 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ category }) => {
-  const { title, image_url } = category;
+  const { id, title, image_url } = category;
   return (
-    <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-      <img
-        src={image_url}
-        alt=""
-        className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-      />
-      <div className="mt-6 mb-2">
-        <h2 className="text-xl font-semibold tracking-wide">{title}</h2>
+    <div className="card  bg-base-100 shadow-2xl p-4">
+      <figure>
+        <img style={{ height: "150px" }} src={image_url} alt="Shoes" />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">{title}</h2>
+
+        <div className="card-actions justify-end">
+          <Link to={`/category/${id}`} className="btn btn-primary">
+            Explore
+          </Link>
+        </div>
       </div>
-      <p className="dark:text-gray-100">
-        Mauris et lorem at elit tristique dignissim et ullamcorper elit. In sed
-        feugiat mi. Etiam ut lacinia dui.
-      </p>
     </div>
   );
 };

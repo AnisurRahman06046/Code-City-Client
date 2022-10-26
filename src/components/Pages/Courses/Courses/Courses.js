@@ -13,13 +13,13 @@ const Courses = () => {
   }, []);
   return (
     <div className="grid grid-cols-3">
-      <div className="border-2">
+      <div className=" mx-auto mt-5">
         {categories.map((category) => (
           <CourseList key={category.id} category={category}></CourseList>
         ))}
       </div>
-      <div className="col-span-2 border-2">
-        <div className="grid grid-cols-2 gap-4">
+      <div className="col-span-2 ">
+        <div className="grid lg:grid-cols-2 gap-4 mt-5 p-8">
           {categories.map((category) => (
             <Card key={category.id} category={category}></Card>
           ))}
