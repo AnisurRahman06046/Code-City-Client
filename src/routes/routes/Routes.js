@@ -4,6 +4,7 @@ import Blog from "../../components/Pages/Blog/Blog/Blog";
 import Categories from "../../components/Pages/Categories/Categories";
 import Courses from "../../components/Pages/Courses/Courses/Courses";
 import Faq from "../../components/Pages/Faq/Faq/Faq";
+import Home from "../../components/Pages/Home/Home";
 import LogIn from "../../components/Pages/LogIn/LogIn/LogIn";
 import Register from "../../components/Pages/Register/Register/Register";
 import Main from "../../layout/Main";
@@ -12,8 +13,16 @@ export const routes = createBrowserRouter([
     path: "/",
     element: <Main></Main>,
     children: [
-      { path: "/", element: <Courses></Courses> },
-      { path: "/courses", element: <Courses></Courses> },
+      {
+        path: "/",
+        element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/course"),
+      },
+      {
+        path: "/courses",
+        element: <Courses></Courses>,
+        loader: () => fetch("http://localhost:5000/course"),
+      },
       {
         path: "/category/:id",
 
