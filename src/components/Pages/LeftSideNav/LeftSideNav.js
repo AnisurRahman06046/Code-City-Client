@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import CategoryList from "../../CategoryList/CategoryList";
+import Categories from "../Categories/Categories";
 
 const LeftSideNav = () => {
   const [categories, setCategories] = useState([]);
@@ -13,12 +15,12 @@ const LeftSideNav = () => {
   }, []);
   return (
     <div>
-      <h1>All categories : {categories.length} </h1>
-      {categories.map((cat) => (
-        <p key={cat.id}>
-          <Link to={`/category/${cat.id}`}>{cat.name}</Link>
-        </p>
-      ))}
+      <h1 className="mt-5 text-3xl font-semibold">Course Categories </h1>
+      <div className="p-5 mt-5">
+        {categories.map((cat) => (
+          <CategoryList key={cat.id} cat={cat}></CategoryList>
+        ))}
+      </div>
     </div>
   );
 };
