@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/logo.png";
+import { FaUserAlt } from "react-icons/fa";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const Header = () => {
@@ -57,6 +58,7 @@ const Header = () => {
                 <li>
                   <Link to="register">Register</Link>
                 </li>
+                <span></span>
               </ul>
             )}
           </ul>
@@ -88,6 +90,11 @@ const Header = () => {
               <li>
                 <Link to="register">Register</Link>
               </li>
+              <img src={user?.photoURL} alt="" />
+
+              <span className="mt-4">
+                <FaUserAlt></FaUserAlt>
+              </span>
             </>
           )}
         </ul>
