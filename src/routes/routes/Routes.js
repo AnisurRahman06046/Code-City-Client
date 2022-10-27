@@ -4,6 +4,7 @@ import AllCourses from "../../components/Pages/AllCourses/AllCourses";
 import Blog from "../../components/Pages/Blog/Blog/Blog";
 import Categories from "../../components/Pages/Categories/Categories";
 import Courses from "../../components/Pages/Courses/Courses/Courses";
+import ErrorPage from "../../components/Pages/ErrorPage/ErrorPage";
 import Faq from "../../components/Pages/Faq/Faq/Faq";
 import Home from "../../components/Pages/Home/Home";
 import LogIn from "../../components/Pages/LogIn/LogIn/LogIn";
@@ -55,4 +56,5 @@ export const routes = createBrowserRouter([
       { path: "/register", element: <Register></Register> },
     ],
   },
+  { path: "*", element: <ErrorPage></ErrorPage> },
 ]);
