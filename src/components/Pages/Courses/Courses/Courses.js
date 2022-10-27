@@ -10,7 +10,7 @@ const Courses = () => {
 
       <div className="grid lg: grid-cols-2 gap-10 sm:grid grid-cols-2 ">
         {allCourses.map((course) => (
-          <CourseCard></CourseCard>
+          <CourseCard course={course}></CourseCard>
         ))}
       </div>
     </div>

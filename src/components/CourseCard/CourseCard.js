@@ -1,17 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CourseCard = ({ course }) => {
+  const { _id, img, name } = course;
   console.log(course);
   return (
     <div className="card  bg-base-100 shadow-xl">
       <figure>
-        <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+        <img src={img} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Shoes!</h2>
+        <h2 className="card-title">{name}</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <Link to={`/course/${_id}`} className="btn btn-primary">
+            Details
+          </Link>
         </div>
       </div>
     </div>
