@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 const Register = () => {
   const { createUser, googleLogin, gitLogIn } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const gitProvider = new GithubAuthProvider();
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -25,7 +27,7 @@ const Register = () => {
       .catch((error) => console.error(error));
   };
   const handleGoogleLogin = () => {
-    googleLogin()
+    googleLogin(googleProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -33,7 +35,7 @@ const Register = () => {
       .catch((error) => console.error(error));
   };
   const handleGitLogin = () => {
-    gitLogIn()
+    gitLogIn(gitProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);

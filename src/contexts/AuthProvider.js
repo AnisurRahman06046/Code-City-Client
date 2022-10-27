@@ -3,8 +3,6 @@ import { createContext } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
-  GithubAuthProvider,
-  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -20,13 +18,11 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const googleProvider = new GoogleAuthProvider();
-  const gitProvider = new GithubAuthProvider();
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  const googleLogin = () => {
+  const googleLogin = (googleProvider) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
@@ -34,18 +30,13 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const gitLogIn = () => {
+  const gitLogIn = (gitProvider) => {
     setLoading(true);
     return signInWithPopup(auth, gitProvider);
   };
 
   const logOut = () => {
-    return signOut(auth)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((error) => console.error(error));
+    return signOut(auth);
   };
 
   useEffect(() => {
