@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { useState } from "react";
 const Register = () => {
   const { createUser, googleLogin, gitLogIn } = useContext(AuthContext);
+  const [passwordError, setPasswordError] = useState("");
   const googleProvider = new GoogleAuthProvider();
   const gitProvider = new GithubAuthProvider();
 
@@ -18,7 +20,15 @@ const Register = () => {
     const password = form.password.value;
     form.reset();
     console.log(email, password, name, url);
-
+    if (!/ (?=[^!@#$&*]*[!@#$&*])/.test(password)) {
+      setPasswordError("please provide at least one special character");
+      return;
+    }
+    if (password.length < 6) {
+      setPasswordError("password should be at least 6 characters");
+      return;
+    }
+    setPasswordError("");
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -101,6 +111,7 @@ const Register = () => {
                 </Link>
               </label>
             </div>
+            <p className="font-bold text-red-500">{passwordError}</p>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
             </div>

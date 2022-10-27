@@ -3,8 +3,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 const LogIn = () => {
-  const { LogIn } = useContext(AuthContext);
+  const { LogIn, user } = useContext(AuthContext);
+  const [passwordError, setPasswordError] = useState("");
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
@@ -16,13 +18,23 @@ const LogIn = () => {
     form.reset();
     console.log(email, password);
 
+    if (user?.email !== email) {
+      setPasswordError("Email does not match");
+      return;
+    }
+    if (user?.password !== password) {
+      setPasswordError("Password does not match");
+    }
+    setPasswordError("");
     LogIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -59,6 +71,7 @@ const LogIn = () => {
                 </Link>
               </label>
             </div>
+            <p className="font-bold text-red-500">{passwordError}</p>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
             </div>

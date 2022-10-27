@@ -2,6 +2,7 @@ import React from "react";
 
 import { Outlet } from "react-router-dom";
 import Faq from "../components/Pages/Faq/Faq/Faq";
+import Footer from "../components/Pages/Footer/Footer";
 import Header from "../components/Pages/Header/Header/Header";
 import LeftSideNav from "../components/Pages/LeftSideNav/LeftSideNav";
 
@@ -17,6 +18,7 @@ const Main = () => {
           <Outlet></Outlet>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
