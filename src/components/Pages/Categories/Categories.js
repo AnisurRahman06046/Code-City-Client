@@ -8,7 +8,7 @@ const Categories = () => {
   console.log(courseCategory);
   return (
     <div>
-      <div className="grid grid-cols-2 p-10 gap-10">
+      <div className="grid lg:grid-cols-3 p-10 gap-10">
         {courseCategory.map((course) => (
           <CourseCard key={course._id} course={course}></CourseCard>
         ))}

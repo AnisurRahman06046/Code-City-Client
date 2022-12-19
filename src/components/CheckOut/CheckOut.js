@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 const CheckOut = () => {
   const data = useLoaderData();
   return (
-    <div>
+    <div className="p-5">
       <h1 className="text-2xl font-bold mt-5 "> Checkout</h1>
       <img className="mt-5" src={data.img} alt="" />
 

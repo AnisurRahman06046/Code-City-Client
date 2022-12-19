@@ -22,10 +22,10 @@ const Register = () => {
     const password = form.password.value;
     form.reset();
     console.log(email, password, name, url);
-    if (!/ (?=[^!@#$&*]*[!@#$&*])/.test(password)) {
-      setPasswordError("please provide at least one special character");
-      return;
-    }
+    // if (!/ (?=[^!@#$&*]*[!@#$&*])/.test(password)) {
+    //   setPasswordError("please provide at least one special character");
+    //   return;
+    // }
     if (password.length < 6) {
       setPasswordError("password should be at least 6 characters");
       return;
@@ -48,7 +48,7 @@ const Register = () => {
           <h1 className="text-5xl font-bold">Register!</h1>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleRegister} className="card-body">
+          <form onSubmit={handleRegister} className="card-body w-96">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>

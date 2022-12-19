@@ -4,9 +4,9 @@ import { useLoaderData, Link } from "react-router-dom";
 const AllCourses = () => {
   const course = useLoaderData();
   return (
-    <div>
+    <div className="mt-10 p-5 mx-auto">
       <div>
-        <nav class=" bg-teal-500 p-6">
+        {/* <nav class=" bg-teal-500 p-6">
           <div class=" text-white mr-6"></div>
           <div class="block lg:hidden">
             <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"></button>
@@ -18,14 +18,14 @@ const AllCourses = () => {
               </Link>
             </div>
           </div>
-        </nav>
+        </nav> */}
       </div>
-      <img src={course?.img} alt="" />
-      <h1 className="text-2xl">{course.name}</h1>
+      <img className="w-96" src={course?.img} alt="" />
+      <h1 className="text-2xl font-semibold mt-4">{course.name}</h1>
       <h4 className="font-bold mt-10">About this course</h4>
       <p>{course?.about}</p>
       <h4 className="font-bold mt-5">You will Learn</h4>
-      <p>{course?.info}</p>
+      <p className="text-justify">{course?.info}</p>
       <br />
 
       <Link to={`/checkout/${course._id}`} className="btn btn-primary mb-2">
